@@ -1,0 +1,15 @@
+LS-114		Isl	lahore		12:00		13:30		2018/05/11
+LS-117		Psh	Rwp		11:00		13:00		2018/05/12
+LS-123		karachi	Quetta		00:00		04:00		2018/05/11
+LS-156		karachi	lahore		18:00		21:00		2018/05/12
+LS-165		karachi	hyd		17:00		21:00		2018/05/15
+LS-122		Dubai	Karachi		12:30		13:30		2018/07/09
+LS-111		karachi	Toronto		17:00		18:30		2018/05/13
+LS-115		karachi	Jeddah		14:00		16:00		2018/05/12
+LS-110		lahore	Riyadh		10:00		13:00		2018/05/15
+LS-112		lahore	karachi		06:00		11:00		2018/05/12
+LS-116		rwp	lahore		20:00		23:00		2018/05/16
+LS-187		karachi	isl		15:00		18:00		2018/05/13
+LS-128		isl	Quetta		09:00		13:00		2018/05/14
+LS-186		karachi	Sydney		04:00		07:00		2018/05/12
+GS-423		Dubai	Karachi		13:00		17:30		2018/05/13

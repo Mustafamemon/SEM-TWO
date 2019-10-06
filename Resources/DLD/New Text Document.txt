@@ -1,0 +1,135 @@
+#include <SoftwareSerial.h>
+const int rxPin = 2;
+const int txPin = 3;
+
+SoftwareSerial mySerial(rxPin, txPin);
+
+int light = 4;
+int mobile = 5;
+int led = 6;
+int pin1 = 9;
+int pin2 = 10;
+int pin3 = 11;
+int bell = 7;
+int pin = 12;
+String data;
+
+void setup()
+{
+  Serial.begin(9600);
+
+  mySerial.begin(9600);
+  pinMode(light, OUTPUT);
+  pinMode(mobile, OUTPUT);
+  pinMode(led, OUTPUT);
+  pinMode(pin1,OUTPUT);
+  pinMode(pin2,OUTPUT);
+  pinMode(pin3,OUTPUT);
+  pinMode(bell, OUTPUT);
+  pinMode(pin, OUTPUT);
+  
+  digitalWrite(light, LOW);
+  digitalWrite(mobile, LOW);
+  digitalWrite(led, LOW);
+  digitalWrite(pin1,LOW);
+  digitalWrite(pin2,LOW);
+  digitalWrite(pin3,LOW);
+  digitalWrite(bell, LOW);
+  noTone(pin);
+}
+
+void loop()
+{
+  int i = 0;
+  char ch = 0;
+  data = "";
+  while (1)
+  {
+    while (mySerial.available() <= 0);
+    ch = mySerial.read();
+    if (ch == '#')
+      break;
+    data += ch;
+  }
+
+  Serial.println(data);
+
+  if (data == "*turn on light")
+  {
+    digitalWrite(light, HIGH);
+    Serial.println("light on");
+  }
+  else if (data == "*turn off light")
+  {
+    digitalWrite(light, LOW);
+    Serial.println("light off");
+  }
+  else if (data == "*charge the mobile")
+  {
+    digitalWrite(mobile, HIGH);
+    Serial.println("charging on");
+  }
+  else if (data == "*turn off charging")
+  {
+    digitalWrite(mobile, LOW);
+    Serial.println("charging off");
+  }
+  else if (data == "*turn on LED")
+  {
+    digitalWrite(led, HIGH);
+    digitalWrite(pin1,HIGH);
+    digitalWrite(pin2,HIGH);
+    digitalWrite(pin3,HIGH);
+    Serial.println("led on");
+  }
+  else if (data == "*turn off LED")
+  {
+    digitalWrite(led, LOW);
+    digitalWrite(pin1,LOW);
+    digitalWrite(pin2,LOW);
+    digitalWrite(pin3,LOW);
+    Serial.println("led off");
+  }
+  else if (data == "*ring the bell")
+  {
+    digitalWrite(bell, HIGH);
+    tone(pin, 261);
+    delay(1000);
+    tone(pin, 277);
+    delay(1000);
+    tone(pin, 294);
+    delay(1000);
+    noTone(pin);
+    digitalWrite(bell, LOW);
+    Serial.println("bell on");
+  }
+  else if (data == "*turn on all")
+  {
+    digitalWrite(light, HIGH);
+    digitalWrite(mobile, HIGH);
+    digitalWrite(led, HIGH);
+    digitalWrite(pin1,HIGH);
+    digitalWrite(pin2,HIGH);
+    digitalWrite(pin3,HIGH);
+    digitalWrite(bell, HIGH);
+    tone(pin, 261);
+    delay(1000);
+    tone(pin, 277);
+    delay(1000);
+    tone(pin, 294);
+    delay(1000);
+    noTone(pin);
+    digitalWrite(bell, LOW);
+    Serial.println("all on");
+  }
+  else if (data == "*turn off all")
+  {
+    digitalWrite(light, LOW);
+    digitalWrite(mobile, LOW);
+    digitalWrite(led, LOW);
+    digitalWrite(pin1,LOW);
+    digitalWrite(pin2,LOW);
+    digitalWrite(pin3,LOW);
+    Serial.println("all off");
+  }
+}
